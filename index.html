@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Place for Seon ♡</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ color:#31536b; background:linear-gradient(180deg,#dff6ff 0%,#f7fcff 48%,#eaf8ff 100%);
+ overflow-x:hidden;
+}
+.sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.star{position:absolute;width:4px;height:4px;border-radius:50%;background:white;box-shadow:0 0 12px #fff;animation:twinkle 3s infinite ease-in-out}
+.cloud{position:absolute;background:rgba(255,255,255,.65);border-radius:999px;filter:blur(1px);animation:float 18s linear infinite}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.25)}}
+@keyframes float{from{transform:translateX(-25vw)}to{transform:translateX(125vw)}}
+.wrap{position:relative;z-index:1;max-width:760px;margin:auto;padding:24px 18px 70px}
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.moon{width:94px;height:94px;border-radius:50%;background:#fff;box-shadow:0 0 35px rgba(255,255,255,.9);margin-bottom:25px;position:relative}
+.moon:after{content:"";position:absolute;width:88px;height:88px;border-radius:50%;background:#dff6ff;left:22px;top:-8px}
+h1{font-size:clamp(40px,10vw,72px);margin:0;color:#426d86;font-weight:700;letter-spacing:-2px}
+.subtitle{font-size:18px;line-height:1.7;margin:14px auto 30px;max-width:520px}
+.from{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#79a4bc}
+.scroll{margin-top:30px;padding:12px 20px;border:1px solid rgba(92,151,181,.25);border-radius:999px;background:rgba(255,255,255,.5);color:#557b91}
+.card{
+ background:rgba(255,255,255,.78);backdrop-filter:blur(12px);
+ border:1px solid rgba(255,255,255,.95);border-radius:28px;padding:28px 24px;
+ margin:22px 0;box-shadow:0 12px 35px rgba(69,133,165,.12)
+}
+.card h2{margin:0 0 12px;color:#3f6f89;font-size:26px}
+.card p{font-size:16px;line-height:1.85;margin:10px 0}
+.soft{color:#66899d}
+.buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+button{
+ border:0;border-radius:18px;padding:17px 12px;background:#e8f7ff;color:#416d85;
+ font-size:15px;font-weight:600;cursor:pointer;transition:.2s
+}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(77,145,178,.15)}
+.reveal{display:none;margin-top:16px;padding:18px;border-radius:18px;background:#f5fcff;line-height:1.8}
+.reveal.show{display:block;animation:fade .5s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.stars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.starbtn{min-height:105px;font-size:26px}
+.starbtn span{display:block;font-size:12px;margin-top:7px}
+.quote{text-align:center;padding:38px 24px}
+.quote p{font-size:21px;line-height:1.75;color:#47758d}
+.verse{font-style:italic;text-align:center;background:rgba(255,255,255,.6)}
+.song{text-align:center}
+.song a{display:inline-block;text-decoration:none;color:white;background:#5e99b5;padding:15px 22px;border-radius:999px;margin-top:8px}
+.final{text-align:center;padding:38px 22px 50px}
+.final h2{font-size:32px}
+.signature{font-family:cursive;font-size:28px;color:#4b7b93;margin-top:25px}
+.hug{font-size:42px;background:#eefaff;width:100%;padding:25px}
+#hugMsg{min-height:35px;text-align:center;font-size:16px}
+.small{font-size:13px;color:#86a5b5}
+@media(max-width:520px){.buttons{grid-template-columns:1fr}.stars{grid-template-columns:1fr 1fr}.card{padding:24px 19px}}
+</style>
+</head>
+<body>
+<div class="sky" id="sky"></div>
+
+<div class="wrap">
+<section class="hero">
+ <div class="moon"></div>
+ <div class="from">a little place from Luna</div>
+ <h1>For Seon ♡</h1>
+ <p class="subtitle">You don't have to be okay before you come here.<br>Just stay for a little while.</p>
+ <div class="scroll">↓ take your time</div>
+</section>
+
+<section class="card">
+ <h2>Hey, baby.</h2>
+ <p>I made this little place for you because sometimes words are easier to keep when you can come back to them.</p>
+ <p>I don't want this to be a place where you have to pretend you're happy. I want it to be somewhere you can breathe, be quiet, smile a little, or just stay for a moment.</p>
+ <p class="soft">So... welcome to your little corner of the sky. 🤍</p>
+</section>
+
+<section class="card">
+ <h2>What do you need today?</h2>
+ <p class="soft">Pick one. No wrong answer.</p>
+ <div class="buttons">
+  <button onclick="reveal('sad')">☁️ I'm having a hard day</button>
+  <button onclick="reveal('mind')">🌙 My mind won't stop</button>
+  <button onclick="reveal('love')">🤍 I need to feel loved</button>
+  <button onclick="reveal('matter')">✨ Remind me why I matter</button>
+ </div>
+ <div id="sad" class="reveal">You don't have to solve everything tonight. Drink some water, breathe slowly, and let yourself rest. A bad day is only a bad day. It doesn't get to decide what you are worth.</div>
+ <div id="mind" class="reveal">You don't have to believe every scary thought your mind gives you. Some things can wait until tomorrow. For now, breathe. You're here. You're safe. You are not alone.</div>
+ <div id="love" class="reveal">In case you forgot: you are loved. Not only when you're happy, funny, strong, or easy to understand. You deserve love on your quiet days too.</div>
+ <div id="matter" class="reveal">Because you're you. Because your existence has touched someone's life. Because there are memories, laughs, conversations, and little moments that would not exist without you. You matter more than you sometimes realize.</div>
+</section>
+
+<section class="card">
+ <h2>If you're scared I'll leave...</h2>
+ <p>I know sometimes you wonder if I'm going to leave. I know there have been moments that made it difficult for you to believe that I will stay.</p>
+ <p>I'm not secretly trying to find a way out.</p>
+ <p><strong>I'm trying to learn how to stay better.</strong></p>
+ <p>I don't expect a website or a few words to suddenly make every fear disappear. I just want you to know that I don't want to leave you.</p>
+ <p>I want to show you through the little things, through my actions, through trying to understand you instead of assuming.</p>
+</section>
+
+<section class="card">
+ <h2>I know you're hurting too.</h2>
+ <p>I know some things have hurt you in ways you don't always talk about. I know you've lost people and memories that meant a lot to you.</p>
+ <p>And I don't want you to feel like you have to be strong all the time.</p>
+ <p>You can be tired here. You can be sad here. You can be quiet here.</p>
+ <p><strong>You don't have to hide the hurting parts of yourself from me.</strong></p>
+</section>
+
+<section class="quote card">
+ <p>“Maybe we're both a little quieter now.<br>That doesn't mean our hearts became empty.”</p>
+ <p class="small">Sometimes people get quieter because they've been hurt. Sometimes they don't know what to say. Sometimes they just need to feel safe again.</p>
+</section>
+
+<section class="card">
+ <h2>If I seem nonchalant...</h2>
+ <p>I'm not always good at showing everything I feel.</p>
+ <p>Sometimes I look calm when there's actually a lot going on inside me. Sometimes I don't know how to say what I mean without making things complicated.</p>
+ <p>And I know you can be quiet too.</p>
+ <p>So if we're both quiet sometimes, I don't want us to automatically think, “They don't care anymore.”</p>
+ <p>Let's learn to ask. Let's learn to talk. Let's learn each other again.</p>
+</section>
+
+<section class="card">
+ <h2>Tap the little stars ✨</h2>
+ <p class="soft">I hid a few reminders for you.</p>
+ <div class="stars">
+  <button class="starbtn" onclick="star(this,'You are not difficult to love.')">✦<span>tap me</span></button>
+  <button class="starbtn" onclick="star(this,'You are allowed to have bad days.')">✦<span>tap me</span></button>
+  <button class="starbtn" onclick="star(this,'You don't have to earn my care.')">✦<span>tap me</span></button>
+  <button class="starbtn" onclick="star(this,'Your feelings matter.')">✦<span>tap me</span></button>
+  <button class="starbtn" onclick="star(this,'You deserve to feel safe being yourself.')">✦<span>tap me</span></button>
+  <button class="starbtn" onclick="star(this,'Somewhere, someone is thinking about you.')">✦<span>tap me</span></button>
+ </div>
+ <div id="starMessage" class="reveal"></div>
+</section>
+
+<section class="card">
+ <h2>For when your mind gets too loud 🌙</h2>
+ <p>Put on a song. Close your eyes for a moment. You don't have to figure out your whole life tonight.</p>
+ <p>Just make it through this moment.</p>
+ <div class="song">
+  <a href="https://www.youtube.com/results?search_query=You+Will+Be+Found+Dear+Evan+Hansen" target="_blank">♪ You Will Be Found</a>
+ </div>
+</section>
+
+<section class="card verse">
+ <h2>A little reminder</h2>
+ <p>“Fear not, for I am with you; be not dismayed, for I am your God.”</p>
+ <p class="small">Isaiah 41:10</p>
+</section>
+
+<section class="card">
+ <h2>One thing I want you to know</h2>
+ <p>I don't know exactly what the future will look like.</p>
+ <p>But I know something about right now.</p>
+ <p><strong>I don't want to leave you.</strong></p>
+ <p>Even when things feel different. Even when we don't understand each other perfectly. Even when we're both a little quieter than before.</p>
+ <p>I still want to understand you. I still want to grow with you. I still want to make more little memories with you.</p>
+ <p>And I don't need us to pretend that nothing changed.</p>
+ <p><strong>I just want us to grow into something new together.</strong></p>
+</section>
+
+<section class="card">
+ <h2>Come here for a second. 🤍</h2>
+ <button class="hug" onclick="hug()">🫂</button>
+ <p id="hugMsg">Tap for a hug from Luna.</p>
+</section>
+
+<section class="card final">
+ <h2>One last thing...</h2>
+ <p>On the days when your mind tells you that you're alone, come back here.</p>
+ <p>Read this again.</p>
+ <p><strong>You are loved.<br>You matter.<br>You don't have to carry everything by yourself.</strong></p>
+ <p>I'm still here, Seon.</p>
+ <div class="signature">— Luna 🤍</div>
+ <p class="small" style="margin-top:30px">You can come back here anytime.</p>
+</section>
+</div>
+
+<script>
+function reveal(id){
+ document.querySelectorAll('.reveal').forEach(x=>{if(!['starMessage'].includes(x.id))x.classList.remove('show')});
+ const e=document.getElementById(id); e.classList.add('show');
+}
+function star(btn,msg){
+ document.getElementById('starMessage').textContent=msg;
+ document.getElementById('starMessage').classList.add('show');
+ btn.style.transform='scale(1.04)';
+}
+function hug(){
+ const m=document.getElementById('hugMsg');
+ m.textContent='Come here. No talking needed. Just a really long hug. 🤍';
+}
+const sky=document.getElementById('sky');
+for(let i=0;i<38;i++){
+ const s=document.createElement('div');s.className='star';
+ s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+ s.style.animationDelay=(Math.random()*4)+'s';sky.appendChild(s);
+}
+for(let i=0;i<5;i++){
+ const c=document.createElement('div');c.className='cloud';
+ c.style.width=(100+Math.random()*130)+'px';c.style.height=(25+Math.random()*25)+'px';
+ c.style.top=(10+Math.random()*70)+'%';c.style.animationDuration=(18+Math.random()*14)+'s';
+ c.style.animationDelay=(-Math.random()*20)+'s';sky.appendChild(c);
+}
+</script>
+</body>
+</html>
